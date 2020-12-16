@@ -1,4 +1,4 @@
-import { computed, ref, reactive, watch } from 'vue'
+import { computed, ref, reactive, watch, CSSProperties } from 'vue'
 import { createPopper } from '@popperjs/core'
 
 import {
@@ -41,11 +41,7 @@ export default function(
 
   const isManualMode = () => props.manualMode || props.trigger === 'manual'
 
-  const popperStyle = computed(() => {
-    return {
-      zIndex: String(PopupManager.nextZIndex()),
-    }
-  })
+  const popperStyle = ref<CSSProperties>({ zIndex: PopupManager.nextZIndex() })
 
   const popperOptions = usePopperOptions(props, {
     arrow: arrowRef,
@@ -189,6 +185,7 @@ export default function(
 
   function onVisibilityChange(toState: boolean) {
     if (toState) {
+      popperStyle.value.zIndex = PopupManager.nextZIndex()
       initializePopper()
     }
   }
@@ -259,7 +256,7 @@ export default function(
     if (isArray(props.trigger)) {
       Object.values(props.trigger).map(mapEvents)
     } else {
-      mapEvents(props.trigger)
+      mapEvents(props.trigger as TriggerType)
     }
   }
 
@@ -284,6 +281,12 @@ export default function(
     onAfterLeave: () => {
       detachPopper()
       emit('after-leave')
+    },
+    onBeforeEnter: () => {
+      emit('before-enter')
+    },
+    onBeforeLeave: () => {
+      emit('before-leave')
     },
     initializePopper,
     isManualMode,

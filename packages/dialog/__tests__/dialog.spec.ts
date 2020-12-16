@@ -1,5 +1,6 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
+import { rAF } from '@element-plus/test-utils/tick'
 import Dialog from '../'
 
 const AXIOM = 'Rem is the best girl'
@@ -28,6 +29,8 @@ describe('Dialog.vue', () => {
     })
 
     await nextTick()
+    await rAF()
+    await nextTick()
     expect(wrapper.find('.el-dialog__body').text()).toEqual(AXIOM)
   })
 
@@ -35,7 +38,7 @@ describe('Dialog.vue', () => {
     const HEADER = 'I am header'
     let wrapper = _mount({
       slots: {
-        header: HEADER,
+        title: HEADER,
       },
       props: {
         modelValue: true,
@@ -102,6 +105,17 @@ describe('Dialog.vue', () => {
     })
     await nextTick()
     expect(wrapper.find('.el-dialog__close').exists()).toBe(true)
+  })
+
+  test('should hide close button when showClose = false', async () => {
+    const wrapper = _mount({
+      props: {
+        modelValue: true,
+        showClose: false,
+      },
+    })
+    await nextTick()
+    expect(wrapper.find('.el-dialog__headerbtn').exists()).toBe(false)
   })
 
   test('should close dialog when click on close button', async () => {
@@ -203,6 +217,8 @@ describe('Dialog.vue', () => {
       })
       expect(wrapper.vm.visible).toBe(true)
       await nextTick()
+      await rAF()
+      await nextTick()
       await wrapper.find('.el-dialog__headerbtn').trigger('click')
       await wrapper.setProps({
         // manually setting this prop because that Transition is not available in testing,
@@ -210,7 +226,9 @@ describe('Dialog.vue', () => {
         modelValue: false,
       })
       await nextTick()
-      expect(wrapper.html()).toBeFalsy()
+      await rAF()
+      await nextTick()
+      expect(wrapper.find('.el-dialog__body').exists()).toBe(false)
     })
   })
 })

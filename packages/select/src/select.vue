@@ -10,13 +10,15 @@
       ref="popper"
       v-model:visible="dropMenuVisible"
       placement="bottom-start"
-      :show-arrow="true"
       :append-to-body="popperAppendToBody"
-      popper-class="el-select--popper"
+      :popper-class="`el-select__popper ${popperClass}`"
       manual-mode
       effect="light"
+      pure
       trigger="click"
-      :offset="11"
+      transition="el-zoom-in-top"
+      :gpu-acceleration="false"
+      @before-enter="handleMenuEnter"
     >
       <template #trigger>
         <div class="select-trigger">
@@ -132,38 +134,29 @@
         </div>
       </template>
       <template #default>
-        <transition
-          name="el-zoom-in-top"
-          @before-enter="handleMenuEnter"
-          @after-leave="doDestroy"
-        >
-          <el-select-menu
-            v-show="visible && emptyText !== false"
-            ref="popper"
+        <el-select-menu>
+          <el-scrollbar
+            v-show="options.length > 0 && !loading"
+            ref="scrollbar"
+            tag="ul"
+            wrap-class="el-select-dropdown__wrap"
+            view-class="el-select-dropdown__list"
+            :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
           >
-            <el-scrollbar
-              v-show="options.length > 0 && !loading"
-              ref="scrollbar"
-              tag="ul"
-              wrap-class="el-select-dropdown__wrap"
-              view-class="el-select-dropdown__list"
-              :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
-            >
-              <el-option
-                v-if="showNewOption"
-                :value="query"
-                :created="true"
-              />
-              <slot></slot>
-            </el-scrollbar>
-            <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
-              <slot v-if="$slots.empty" name="empty"></slot>
-              <p v-else class="el-select-dropdown__empty">
-                {{ emptyText }}
-              </p>
-            </template>
-          </el-select-menu>
-        </transition>
+            <el-option
+              v-if="showNewOption"
+              :value="query"
+              :created="true"
+            />
+            <slot></slot>
+          </el-scrollbar>
+          <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
+            <slot v-if="$slots.empty" name="empty"></slot>
+            <p v-else class="el-select-dropdown__empty">
+              {{ emptyText }}
+            </p>
+          </template>
+        </el-select-menu>
       </template>
     </el-popper>
   </div>
@@ -192,6 +185,7 @@ import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
 import { isValidComponentSize } from '@element-plus/utils/validators'
 import { useSelect, useSelectStates } from './useSelect'
 import { selectKey } from './token'
+import { useFocus } from '@element-plus/hooks'
 
 import type { PropType } from 'vue'
 
@@ -225,7 +219,10 @@ export default defineComponent({
     filterable: Boolean,
     allowCreate: Boolean,
     loading: Boolean,
-    popperClass: String,
+    popperClass: {
+      type: String,
+      default: '',
+    },
     remote: Boolean,
     loadingText: String,
     noMatchText: String,
@@ -283,13 +280,13 @@ export default defineComponent({
       toggleLastOptionHitState,
       resetInputState,
       handleComposition,
+      onOptionCreate,
       onOptionDestroy,
       handleMenuEnter,
       handleFocus,
       blur,
       handleBlur,
       handleClearClick,
-      doDestroy,
       handleClose,
       toggleMenu,
       selectOption,
@@ -304,6 +301,8 @@ export default defineComponent({
       selectWrapper,
       scrollbar,
     } = useSelect(props, states, ctx)
+
+    const { focus } = useFocus(reference)
 
     const {
       inputWidth,
@@ -334,6 +333,7 @@ export default defineComponent({
       hoverIndex,
       handleOptionSelect,
       selectEmitter: states.selectEmitter,
+      onOptionCreate,
       onOptionDestroy,
       selectWrapper,
       selected,
@@ -352,7 +352,7 @@ export default defineComponent({
           small: 32,
           mini: 28,
         }
-        const input = reference.value.$el
+        const input = reference.value.input
         states.initialInputHeight = input.getBoundingClientRect().height || sizeMap[selectSize.value]
       }
       if (props.remote && props.multiple) {
@@ -376,6 +376,7 @@ export default defineComponent({
     if (!props.multiple && Array.isArray(props.modelValue)) {
       ctx.emit(UPDATE_MODEL_EVENT, '')
     }
+
     return {
       selectSize,
       readonly,
@@ -418,13 +419,13 @@ export default defineComponent({
       blur,
       handleBlur,
       handleClearClick,
-      doDestroy,
       handleClose,
       toggleMenu,
       selectOption,
       getValueKey,
       navigateOptions,
       dropMenuVisible,
+      focus,
 
       reference,
       input,

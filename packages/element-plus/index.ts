@@ -62,7 +62,7 @@ import ElRadioButton from '@element-plus/radio-button'
 import ElRadioGroup from '@element-plus/radio-group'
 import ElRate from '@element-plus/rate'
 import ElRow from '@element-plus/row'
-import ElScrollBar from '@element-plus/scrollbar'
+import ElScrollbar from '@element-plus/scrollbar'
 import ElSelect from '@element-plus/select'
 import ElSlider from '@element-plus/slider'
 import ElStep from '@element-plus/step'
@@ -82,12 +82,15 @@ import ElTooltip from '@element-plus/tooltip'
 import ElTransfer from '@element-plus/transfer'
 import ElTree from '@element-plus/tree'
 import ElUpload from '@element-plus/upload'
+import ElVirtualList from '@element-plus/virtual-list'
 import { use } from '@element-plus/locale'
 import { version as version_ } from './version'
 import { setConfig } from '@element-plus/utils/config'
 import type { InstallOptions } from '@element-plus/utils/config'
 
 const version = version_ // version_ to fix tsc issue
+
+const locale = use
 
 const defaultInstallOpt: InstallOptions =  {
   size: '' as ComponentSize,
@@ -153,7 +156,7 @@ const components = [
   ElRadioGroup,
   ElRate,
   ElRow,
-  ElScrollBar,
+  ElScrollbar,
   ElSelect,
   ElSlider,
   ElStep,
@@ -173,6 +176,7 @@ const components = [
   ElTransfer,
   ElTree,
   ElUpload,
+  ElVirtualList,
 ]
 
 const plugins = [
@@ -185,7 +189,7 @@ const plugins = [
 
 const install = (app: App, opt: InstallOptions): void => {
   const option = Object.assign(defaultInstallOpt, opt)
-  use(option.locale)
+  locale(option.locale)
   app.config.globalProperties.$ELEMENT = option
   setConfig(option)
 
@@ -262,7 +266,7 @@ export {
   ElRadioGroup,
   ElRate,
   ElRow,
-  ElScrollBar,
+  ElScrollbar,
   ElSelect,
   ElSlider,
   ElStep,
@@ -282,8 +286,10 @@ export {
   ElTransfer,
   ElTree,
   ElUpload,
+  ElVirtualList,
   version,
   install,
+  locale,
 }
 
 export default {

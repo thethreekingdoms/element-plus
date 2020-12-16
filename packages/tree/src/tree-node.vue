@@ -16,6 +16,7 @@
     :aria-disabled="node.disabled"
     :aria-checked="node.checked"
     :draggable="tree.props.draggable"
+    :data-key="getNodeKey(node)"
     @click.stop="handleClick"
     @contextmenu="handleContextMenu"
     @dragstart.stop="handleDragStart"
@@ -182,7 +183,7 @@ export default defineComponent({
     }
 
     const handleContextMenu = (event: Event) => {
-      if (tree.instance.vnode.props['onNode-contextmenu']) {
+      if (tree.instance.vnode.props['onNodeContextmenu']) {
         event.stopPropagation()
         event.preventDefault()
       }

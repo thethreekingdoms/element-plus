@@ -8,7 +8,7 @@ import type {
   Effect,
   Placement,
   Options,
-} from '@element-plus/popper/src/use-popper/defaults'
+} from '@element-plus/popper'
 
 /**
  * ElTooltip
@@ -139,6 +139,7 @@ export default defineComponent({
       ElPopper,
       {
         ref: 'popper',
+        appendToBody: true,
         class: this.class,
         disabled,
         effect,

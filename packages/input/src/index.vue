@@ -34,6 +34,7 @@
         :autocomplete="autocomplete"
         :tabindex="tabindex"
         :aria-label="label"
+        :placeholder="placeholder"
         @compositionstart="handleCompositionStart"
         @compositionupdate="handleCompositionUpdate"
         @compositionend="handleCompositionEnd"
@@ -168,6 +169,9 @@ export default defineComponent({
       default: 'off',
       validator: (val: string) => ['on', 'off'].includes(val),
     },
+    placeholder: {
+      type: String,
+    },
     form: {
       type: String,
       default: '',
@@ -219,8 +223,8 @@ export default defineComponent({
 
   setup(props, ctx) {
     const instance = getCurrentInstance()
-    const attrs = useAttrs(true)
-    const $ElEMENT = useGlobalConfig()
+    const attrs = useAttrs()
+    const $ELEMENT = useGlobalConfig()
 
     const elForm = inject(elFormKey, {} as ElFormContext)
     const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
@@ -234,7 +238,7 @@ export default defineComponent({
     const _textareaCalcStyle = shallowRef({})
 
     const inputOrTextarea = computed(() => input.value || textarea.value)
-    const inputSize = computed(() => props.size || elFormItem.size || $ElEMENT.size)
+    const inputSize = computed(() => props.size || elFormItem.size || $ELEMENT.size)
     const needStatusIcon = computed(() => elForm.statusIcon)
     const validateState = computed(() => elFormItem.validateState || '')
     const validateIcon = computed(() => VALIDATE_STATE_MAP[validateState.value])
