@@ -353,7 +353,7 @@ Attention à la capitalisation !
 
 Lorsque vous choisissez une plage de dates, vous pouvez assigner l'horaire de départ et de fin pour chacune des dates.
 
-:::demo Par défaut, l'horaire pour les dates de début et de fin est `00:00:00`. Configurez `default-time` pour changer l'horaire. Cet attribut prends un tableau de un ou deux horaires au format `12:00:00`. Le premier est pour la date de début, le deuxième pour la date de fin.
+:::demo By default, the time part of start date and end date are both `00:00:00`. Setting `default-time` can change their time respectively. It accepts an array of up to two Date objects. The first string sets the time for the start date, and the second for the end date.
 ```html
 <template>
   <div class="block">
@@ -384,6 +384,12 @@ Lorsque vous choisissez une plage de dates, vous pouvez assigner l'horaire de d�
 ```
 :::
 
+### Localization
+
+The default locale of is English, if you need to use other languages, please check [Internationalization](#/fr-FR/component/i18n)
+
+Note, date time locale (month name, first day of the week ...) are also configed in localization.
+
 ### Attributs
 | Attribut      | Description          | Type      | Valeurs acceptées       | Défaut  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -397,12 +403,12 @@ Lorsque vous choisissez une plage de dates, vous pouvez assigner l'horaire de d�
 | start-placeholder | Le placeholder pour la date de début en mode plage de dates. | string | — | — |
 | end-placeholder | Le placeholder pour la date de fin en mode plage de dates. | string | — | — |
 | type | Type du picker. | string | year/month/date/dates/datetime/ week/datetimerange/daterange/ monthrange | date |
-| format | Format d'affichage dans le champ. | string | Voir [formats de date](#/fr-FR/component/date-picker#formats-de-date). | yyyy-MM-dd |
+| format | Format d'affichage dans le champ. | string | Voir [formats de date](#/fr-FR/component/date-picker#formats-de-date). | YYYY-MM-DD |
 | align | Alignement. | left/center/right | left |
 | popper-class | Nom de classe pour le menu déroulant du DatePicker. | string | — | — |
 | range-separator | Séparateur de plage de dates. | string | — | '-' |
 | default-value | Date par défaut du calendrier, optionnelle. | Date | Tout ce qui est accepté par `new Date()` | — |
-| default-time | Horaire par défaut quand on sélectionne une plage dates, optionnel. | string[] | Tableau de taille 2, chaque valeur est au format `12:00:00`. La première pour la date de début, la deuxième pour la date de fin. | — |
+| default-time | optional, the time value to use when selecting date range | Date[] | Array with length 2, each item is a Date. The first item for the start date and then second item for the end date | — |
 | name | Identique au `name` de l'input natif | string | — | — |
 | unlink-panels | Rend indépendants les deux panneaux de plage de dates. | boolean | — | false |
 | prefix-icon | Icône de préfixe. | string | — | el-icon-date |

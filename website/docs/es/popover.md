@@ -162,10 +162,10 @@ Por supuesto, puedes anidar otras operaciones. Es más ligero que utilizar un `d
 | width          | ancho del popover                        | string, number | —                                        | Min width 150px                          |
 | placement      | posición del popover en la pantalla      | string         | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom                                   |
 | disabled       | si el popover está deshabilitado         | boolean        | —                                        | false                                    |
-| value / v-model | si el popover está visible               | Boolean        | —                                        | false                                    |
+| visible / v-model:visible | si el popover está visible               | Boolean        | —                                        | false                                    |
 | offset         | popover offset                           | number         | —                                        | 0                                        |
 | transition     | animación de transición del popover | string         | —                                        | el-fade-in-linear                        |
-| visible-arrow  | si una flecha del tooltip es mostrada o no. Para más información, por favor refiérase a [Vue-popper](https://github.com/element-component/vue-popper) | boolean        | —                                        | true                                     |
+| show-arrow  | si una flecha del tooltip es mostrada o no. Para más información, por favor refiérase a [Vue-popper](https://github.com/element-component/vue-popper) | boolean        | —                                        | true                                     |
 | popper-options | parámetros para [popper.js](https://popper.js.org/documentation.html) | object         | por favor, refiérase a [popper.js](https://popper.js.org/documentation.html) | `{ boundariesElement: 'body', gpuAcceleration: false }` |
 | popper-class   | clase propia para popover                | string         | —                                        | —                                        |
 | open-delay     | retraso de la aparición cuando `trigger` es hover, en milisegundos | number         | —                                        | —                                        |

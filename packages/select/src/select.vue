@@ -1,7 +1,7 @@
 <template>
   <div
     ref="selectWrapper"
-    v-clickOutside="handleClose"
+    v-click-outside:[popperPaneRef]="handleClose"
     class="el-select"
     :class="[selectSize ? 'el-select--' + selectSize : '']"
     @click.stop="toggleMenu"
@@ -17,6 +17,7 @@
       pure
       trigger="click"
       transition="el-zoom-in-top"
+      :stop-popper-mouse-event="false"
       :gpu-acceleration="false"
       @before-enter="handleMenuEnter"
     >
@@ -37,7 +38,7 @@
                 disable-transitions
                 @close="deleteTag($event, selected[0])"
               >
-                <span class="el-select__tags-text">{{ selected[0].currentLabel }}</span>
+                <span class="el-select__tags-text" :style="{ 'max-width': inputWidth - 123 + 'px' }">{{ selected[0].currentLabel }}</span>
               </el-tag>
               <el-tag
                 v-if="selected.length > 1"
@@ -62,7 +63,7 @@
                   disable-transitions
                   @close="deleteTag($event, item)"
                 >
-                  <span class="el-select__tags-text">{{ item.currentLabel }}</span>
+                  <span class="el-select__tags-text" :style="{ 'max-width': inputWidth - 75 + 'px' }">{{ item.currentLabel }}</span>
                 </el-tag>
               </span>
             </transition>
@@ -171,6 +172,7 @@ import {
   nextTick,
   reactive,
   provide,
+  computed,
 } from 'vue'
 import ElInput from '@element-plus/input'
 import ElOption from './option.vue'
@@ -204,7 +206,7 @@ export default defineComponent({
   props: {
     name: String,
     id: String,
-    modelValue: [Array, String, Number],
+    modelValue: [Array, String, Number, Boolean, Object],
     autocomplete: {
       type: String,
       default: 'off',
@@ -377,6 +379,10 @@ export default defineComponent({
       ctx.emit(UPDATE_MODEL_EVENT, '')
     }
 
+    const popperPaneRef = computed(() => {
+      return popper.value?.popperRef
+    })
+
     return {
       selectSize,
       readonly,
@@ -430,6 +436,7 @@ export default defineComponent({
       reference,
       input,
       popper,
+      popperPaneRef,
       tags,
       selectWrapper,
       scrollbar,

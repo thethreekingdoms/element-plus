@@ -31,12 +31,14 @@ import ElDrawer from '@element-plus/drawer'
 import ElDropdown from '@element-plus/dropdown'
 import ElDropdownItem from '@element-plus/dropdown-item'
 import ElDropdownMenu from '@element-plus/dropdown-menu'
+import ElEmpty from '@element-plus/empty'
 import ElFooter from '@element-plus/footer'
 import ElForm from '@element-plus/form'
 import ElFormItem from '@element-plus/form-item'
 import ElHeader from '@element-plus/header'
 import ElIcon from '@element-plus/icon'
 import ElImage from '@element-plus/image'
+import ElImageViewer from '@element-plus/image-viewer'
 import ElInfiniteScroll from '@element-plus/infinite-scroll'
 import ElInput from '@element-plus/input'
 import ElInputNumber from '@element-plus/input-number'
@@ -83,7 +85,12 @@ import ElTransfer from '@element-plus/transfer'
 import ElTree from '@element-plus/tree'
 import ElUpload from '@element-plus/upload'
 import ElVirtualList from '@element-plus/virtual-list'
+import ElSpace from '@element-plus/space'
+import ElSkeleton from '@element-plus/skeleton'
+import ElSkeletonItem from '@element-plus/skeleton-item'
 import { use } from '@element-plus/locale'
+// if you encountered problems alike "Can't resolve './version'"
+// please run `yarn bootstrap` first
 import { version as version_ } from './version'
 import { setConfig } from '@element-plus/utils/config'
 import type { InstallOptions } from '@element-plus/utils/config'
@@ -130,12 +137,14 @@ const components = [
   ElDropdown,
   ElDropdownItem,
   ElDropdownMenu,
+  ElEmpty,
   ElFooter,
   ElForm,
   ElFormItem,
   ElHeader,
   ElIcon,
   ElImage,
+  ElImageViewer,
   ElInput,
   ElInputNumber,
   ElLink,
@@ -177,6 +186,9 @@ const components = [
   ElTree,
   ElUpload,
   ElVirtualList,
+  ElSpace,
+  ElSkeleton,
+  ElSkeletonItem,
 ]
 
 const plugins = [
@@ -235,12 +247,14 @@ export {
   ElDropdown,
   ElDropdownItem,
   ElDropdownMenu,
+  ElEmpty,
   ElFooter,
   ElForm,
   ElFormItem,
   ElHeader,
   ElIcon,
   ElImage,
+  ElImageViewer,
   ElInfiniteScroll,
   ElInput,
   ElInputNumber,
@@ -287,6 +301,9 @@ export {
   ElTree,
   ElUpload,
   ElVirtualList,
+  ElSpace,
+  ElSkeleton,
+  ElSkeletonItem,
   version,
   install,
   locale,

@@ -1,5 +1,155 @@
 ## Changelog
 
+### 1.0.1-beta.24
+
+*2021-01-11*
+
+#### Bug fixes
+
+- Fix time picker scroll bug (#1227)
+- Fix tree node don't update after push new node into parent (#1231)
+- Fix loading error show when parent's display is not block (#1250)
+- Fix input-number behavior error (#1252)
+- Fix select emptyText error show (#1213)
+- Fix select to replace symbols to strings to avoid individual importing symbol bug (#1224)
+
+### 1.0.1-beta.23
+
+*2021-01-07*
+
+#### New feature
+
+- New component `ElEmpty` (#1210)
+
+#### Bug fixes
+
+- Fix dropdown menu stop-popper-mouse-event (#1219)
+- Fix menu item group not working (#1217)
+
+#### Chore updates
+
+- Bumping dep versions (#1214)
+
+### 1.0.1-beta.22
+
+*2021-01-06*
+
+#### Bug fixes
+
+- Fix menu item not expanding correctly (#1212)
+- Fix popover hijacking mouse event bug (#1201)
+
+#### Chore updates
+
+- Update contain doc style (#1204)
+
+### 1.0.1-beta.21
+
+*2021-01-05*
+
+#### Bug fixes
+
+- Separate ImageViewer component (#1199)
+- Fix YearPicker disabledDate bug (#1193)
+- Fix Dialog render bug (#1144)
+- Fix Tree deep watch data (#1188)
+- Fix Popper transition lost bug (#1190)
+- Fix Popover clickoutside not working bug (#1171)
+- Fix Textarea line-height style bug (#1181)
+
+### 1.0.1-beta.19
+
+*2021-01-02*
+
+#### Bug fixes
+
+- Fix WeekPicker should return the first day of the week (#1169)
+- Fix Dialog close event (#1164)
+- Fix Select prop type missing array (#1168)
+
+### 1.0.1-beta.18
+
+*2020-12-31*
+
+#### Bug fixes
+
+- Fix timepicker keyevent bug (#1151)
+- Bumping vue version to 3.0.5 (#1159)
+- Fix table when the data changes, the layout is not updated bug (#1059)
+- Fix Module @vue/test-utils has no exported members bug (#1139)
+- Fix scrollbar mouseup event bug (#1123)
+- Fix select props modelValue type error (#1158)
+
+### 1.0.1-beta.15
+
+*2020-12-27*
+
+#### Bug fixes
+
+- Fix cascader panel bug (#1112)
+- Fix date-picker clear bug (#1114)
+- Update build logic (#1118)
+- Fix notification style bug (#1122)
+
+### 1.0.1-beta.14
+
+*2020-12-24*
+
+#### Bug fixes
+
+- Export textarea method resizeTextarea (#1032)
+- Fix table column not deleted bug (#1062)
+- Fix scrollbar mouseup scroll bug (#1066)
+- Fix slider mouseup scroll bug (#1066)
+- Fix pagination v-model of page-size not work (#1079)
+- Fix app.use(comp.vue) type (#1067)
+- Fix the style of scrollbar (#1042)
+- Fix color-picker drag (#1084)
+- Fix table z-index (#1078)
+
+### 1.0.1-beta.11
+
+*2020-12-21*
+
+#### New features
+
+- Add Skeleton compontent (#953)
+
+#### Bug fixes
+
+- Fix input add placeholder (#1052)
+- Fix date-picker bind $attrs issue (#1069)
+- Fix popper use EmitType to replace string (#1053)
+- Fix table border style (#1056)
+
+### 1.0.1-beta.10
+
+*2020-12-18*
+
+#### New features
+
+- Add Space Component (#1002)
+
+#### Bug fixes
+
+- Fix select content overflow in multiple select (#967)
+- Fix table global config (#999)
+
+### 1.0.1-beta.9
+
+*2020-12-16*
+
+#### Bug fixes
+
+- Fix menu collapse animation failure (#1003)
+- Fix timepicker / datepicker fragment error (#1009)
+- Update time select (#1014)
+- Fix dialog can't scroll if the content too large (#993)
+- Fix tree keyboard navigation bug (#995)
+- Fix table filter-panel style (#943)
+- Fix dialog header slot (#997)
+- Fix native scrollbar not hide when `native` is not true (#971)
+
 ### 1.0.1-beta.8
 
 *2020-12-12*

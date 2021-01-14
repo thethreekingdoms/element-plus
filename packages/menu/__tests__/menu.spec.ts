@@ -1,10 +1,9 @@
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { rAF } from '@element-plus/test-utils/tick'
 import { sleep } from '@element-plus/test-utils'
 
 import Menu from '../src/menu.vue'
-import MenuGroup from '../src/menuGroup.vue'
+import MenuGroup from '../src/menuItemGroup.vue'
 import MenuItem from '../src/menuItem.vue'
 import SubMenu from '../src/submenu.vue'
 

@@ -2,34 +2,6 @@
 
 時間インプットにはタイムピッカーを使用します。
 
-### 固定タイムピッカー
-
-ユーザーが選択できる固定時間のリストを提供する。
-
-:::demo `el-time-select` ラベルを使用し、開始時刻、終了時刻、タイムステップを `start`, `end`, `step` で指定します。`
-```html
-<el-time-select
-  v-model="value"
-  :picker-options="{
-    start: '08:30',
-    step: '00:15',
-    end: '18:30'
-  }"
-  placeholder="Select time">
-</el-time-select>
-
-<script>
-  export default {
-    data() {
-      return {
-        value: ''
-      };
-    }
-  }
-</script>
-```
-:::
-
 ### 任意のタイムピッカー
 
 任意の時間を選ぶことができます。
@@ -94,47 +66,6 @@
 ```
 :::
 
-### 固定時間範囲
-
-開始時間が最初に選ばれた場合は、それに応じて終了時間が変更されます。
-
-:::demo
-```html
-<template>
-  <el-time-select
-    placeholder="Start time"
-    v-model="startTime"
-    :picker-options="{
-      start: '08:30',
-      step: '00:15',
-      end: '18:30'
-    }">
-  </el-time-select>
-  <el-time-select
-    placeholder="End time"
-    v-model="endTime"
-    :picker-options="{
-      start: '08:30',
-      step: '00:15',
-      end: '18:30',
-      minTime: startTime
-    }">
-  </el-time-select>
-</template>
-
-<script>
-  export default {
-    data() {
-      return {
-        startTime: '',
-        endTime: ''
-      };
-    }
-  }
-</script>
-```
-:::
-
 ### 任意の時間範囲
 
 任意の時間範囲を選択することができます。
@@ -175,7 +106,7 @@
 ### 属性
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| value / v-model | バインディング値 | date(TimePicker) / string(TimeSelect) | - | - |
+| value / v-model | バインディング値 | date | - | - |
 | readonly | タイムピッカーが読み取り専用かどうか | boolean | — | false |
 | disabled | タイムピッカーが無効になっているかどうか | boolean | — | false |
 | editable | 入力が編集可能かどうか | boolean | — | true |
@@ -184,8 +115,8 @@
 | placeholder | 非範囲モード時のプレースホルダ | string | — | — |
 | start-placeholder | 範囲モードの開始時刻のプレースホルダ | string | — | — |
 | end-placeholder | 範囲モード終了時のプレースホルダ | string | — | — |
-| is-range | 時間範囲を選択するかどうか、`<el-time-picker>` でのみ動作します。 | boolean | — | false |
-| arrow-control | 矢印ボタンを使って時間を選択するかどうか、`<el-time-picker>` でのみ動作します。 | boolean | — | false |
+| is-range | 時間範囲を選択するかどうか | boolean | — | false |
+| arrow-control | 矢印ボタンを使って時間を選択するかどうか| boolean | — | false |
 | align | 整列 | left / center / right | left |
 | popper-class | タイムピッカーのドロップダウンのカスタムクラス名 | string | — | — |
 | range-separator | 範囲セパレータ | string | - | '-' |
@@ -193,15 +124,6 @@
 | name | ネイティブ入力の `name` と同じ | string | — | — |
 | prefix-icon | カスタムプレフィックスアイコンクラス | string | — | el-icon-time |
 | clear-icon | カスタムクリアアイコンクラス | string | — | el-icon-circle-close |
-
-### 時間選択オプション
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| start | 開始時刻 | string | — | 09:00 |
-| end | 終了時刻 | string | — | 18:00 |
-| step | タイムステップ | string | — | 00:30 |
-| minTime | 最低時間、それ以前の時間は無効化されます。 | string | — | 00:00 |
-| maxTime | 最大時間、この時間以降は無効化されます。 | string | — | — |
 | disabledHours | To specify the array of hours that cannot be selected | function | — | - |
 | disabledMinutes | To specify the array of minutes that cannot be selected | function(selectedHour) | — | - |
 | disabledSeconds | To specify the array of seconds that cannot be selected | function(selectedHour, selectedMinute) | — | - |

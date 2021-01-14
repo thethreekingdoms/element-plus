@@ -351,7 +351,7 @@ Pay attention to capitalization
 
 When picking a date range, you can assign the time part for start date and end date.
 
-:::demo By default, the time part of start date and end date are both `00:00:00`. Setting `default-time` can change their time respectively. It accepts an array of up to two strings with the format of `12:00:00`. The first string sets the time for the start date, and the second for the end date.
+:::demo By default, the time part of start date and end date are both `00:00:00`. Setting `default-time` can change their time respectively. It accepts an array of up to two Date objects. The first string sets the time for the start date, and the second for the end date.
 ```html
 <template>
   <div class="block">
@@ -382,6 +382,12 @@ When picking a date range, you can assign the time part for start date and end d
 ```
 :::
 
+### Localization
+
+The default locale of is English, if you need to use other languages, please check [Internationalization](#/en-US/component/i18n)
+
+Note, date time locale (month name, first day of the week ...) are also configed in localization.
+
 ### Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -395,12 +401,12 @@ When picking a date range, you can assign the time part for start date and end d
 | start-placeholder | placeholder for the start date in range mode | string | — | — |
 | end-placeholder | placeholder for the end date in range mode | string | — | — |
 | type | type of the picker | string | year/month/date/dates/datetime/ week/datetimerange/daterange/ monthrange | date |
-| format | format of the displayed value in the input box | string | see [date formats](#/en-US/component/date-picker#date-formats) | yyyy-MM-dd |
+| format | format of the displayed value in the input box | string | see [date formats](#/en-US/component/date-picker#date-formats) | YYYY-MM-DD |
 | align | alignment | left/center/right | left |
 | popper-class | custom class name for DatePicker's dropdown | string | — | — |
 | range-separator | range separator | string | — | '-' |
 | default-value | optional, default date of the calendar | Date | anything accepted by `new Date()` | — |
-| default-time | optional, the time value to use when selecting date range | string[] | Array with length 2, each item is a string like `12:00:00`. The first item for the start date and then second item for the end date | — |
+| default-time | optional, the time value to use when selecting date range | Date[] | Array with length 2, each item is a Date. The first item for the start date and then second item for the end date | — |
 | name | same as `name` in native input | string | — | — |
 | unlink-panels | unlink two date-panels in range-picker | boolean | — | false |
 | prefix-icon | Custom prefix icon class | string | — | el-icon-date |

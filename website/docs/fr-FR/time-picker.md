@@ -6,7 +6,7 @@ Utiliser TimePicker pour sélectionner un horaire.
 
 Vous pouvez aussi laisser l'utilisateur choisir librement un horaire.
 
-:::demo Utilisez `el-time-picker` puis l'attribut `picker-options` et sa propriété `disabledHours` `disabledMinutes` and `disabledSeconds` pour déterminer la tranche horaire disponible. Par défaut, vous pouvez utiliser la molette de votre souris, ou les flèches directionnelles si l'attribut `arrow-control` est présent.
+:::demo Utilisez `el-time-picker` puis l'attribut et sa propriété `disabledHours` `disabledMinutes` and `disabledSeconds` pour déterminer la tranche horaire disponible. Par défaut, vous pouvez utiliser la molette de votre souris, ou les flèches directionnelles si l'attribut `arrow-control` est présent.
 
 ```html
 <template>
@@ -107,7 +107,7 @@ Vous pouvez également définir un intervalle libre.
 
 | Attribut      | Description          | Type      | Valeurs acceptées       | Défaut  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| value / v-model | La valeur liée. | date(TimePicker) / string(TimeSelect) | - | - |
+| value / v-model | La valeur liée. | Date | - | - |
 | readonly | Si TimePicker est en lecture seule. | boolean | — | false |
 | disabled | Si TimePicker est désactivé. | boolean | — | false |
 | editable | Si le champ d'input est éditable. | boolean | — | true |
@@ -116,8 +116,8 @@ Vous pouvez également définir un intervalle libre.
 | placeholder | Placeholder en mode non-intervalle. | string | — | — |
 | start-placeholder | Placeholder de l'horaire de début en mode intervalle. | string | — | — |
 | end-placeholder | Placeholder de l'horaire de fin en mode intervalle. | string | — | — |
-| is-range | Si le mode intervalle est activé, marche avec `<el-time-picker>`. | boolean | — | false |
-| arrow-control | Si les flèches directionnelles peuvent être utilisées, marche avec `<el-time-picker>`. | boolean | — | false |
+| is-range | Si le mode intervalle est activé | boolean | — | false |
+| arrow-control | Si les flèches directionnelles peuvent être utilisées | boolean | — | false |
 | align | Alignement. | left / center / right | left |
 | popper-class | Classe du menu du TimePicker. | string | — | — |
 | range-separator | Séparateur d'intervalle. | string | - | '-' |
