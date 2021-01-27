@@ -42,7 +42,7 @@ describe('Loading', () => {
     vm.loading = false
 
     await sleep(100)
-    expect(vm.$el.querySelector('.el-loading-mask').style.display).toEqual('none')
+    expect(wrapper.find('.el-loading-mask').exists()).toBeFalsy()
   })
 
   test('unmounted directive', async () => {
@@ -268,6 +268,8 @@ describe('Loading', () => {
       </template>
       </el-input>`,
     })
+    await nextTick()
+    await nextTick()
     const maskDisplay = getComputedStyle(wrapper.find('.el-loading-mask').element).display
     expect(maskDisplay).toBe('block')
   })
