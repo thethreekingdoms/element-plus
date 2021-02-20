@@ -1,5 +1,76 @@
 ## Changelog
 
+### 1.0.2-beta.32
+
+*2021-01-31*
+#### Bug fixes
+- Fix switch cannot change width dynamically (#1435)
+- Fix PopConfirm translation error (#1450)
+- Fix date range picker input issue (#1439)
+- Fix date picker second clear not trigger change event #1438
+- Fix behavior of tooltip (#1443)
+- Fix bug cause by scrollToOption (#1440)
+- Fix the issue which caused input area render error on Safari (#1429)
+- Fix shadow rendering bug of initializing fixed columns (#1418)
+- Fix popper trigger ref cannot be fetched (#1419)
+- Remove tab incorrect highlight style (#1416)
+- Fix type check error of message (#1413)
+- Fix that the column width is calculated incorrectly (#1381)
+- Fix popper position error (#1411)
+- Fix style of demo card header (#1405)
+- Fix upload list remove animation incorrect (#1379)
+
+#### Features
+- feat(carousel): add pause-on-hover prop (#1423)
+- feat(dropdown): add max-height prop of menu (#1436)
+- feat(progress): add default slot (#1426)
+
+#### Chore updates
+- docs: remove auto-complete of input and select (#1437)
+- css prefix (#1407)
+- docs(project): Update `importing on demand` section in `quickstart.md, to solve the issue which caused importing on demand not working (#1414)
+- Fix dome-block bottom bar width error when fixed (#1406)
+### 1.0.2-beta.31
+
+*2021-01-31*
+
+#### Bug fixes
+
+- Fix Select can not scroll to default option (#1397)
+- Fix Select tag's text is empty string when multiple with remote (#1393)
+- Fix Tree error cause by child node's data is not reactive (#1396)
+- Update Button change height to min-height (#1402)
+- Fix Tree every node @check-change event fire only once (#1390)
+- Fix Notification remove dom when destoryed (#1378)
+- Fix Message component trigger many times bug #1269 (#1270)
+- Fix ColorPicker compilation errors caused by switch (#1375)
+- Fix Table column insertion disorder (#1329)
+- Fix Popover z-index won't update when popover is shown (#1364)
+- Update Dialog to accept number type (#1373)
+- Fix Pagination jumper style error (#1372)
+- Fix Col style gets affected by invalid value bug (#1370)
+- Fix table remove tooltip when the component destroyed (#1245)
+- Update Scrollbar when scrollbar isn't shown, hide the bar (#1342)
+- Fix MessageBox remove default button text which caused i18n not working (#1357)
+- Fix Popper api consistency (#1354)
+- Fix dropdown/select/picker popper position error when has line-height (#1349)
+- Fix DatePicker modify the judgment logic of startDate and endDate (#1322)
+- Refactor Message and Notification component with VCA (#1387)
+
+#### Chore updates
+
+- Update Axure resource v2.1.0 (#1400)
+
+### 1.0.2-beta.30
+
+*2021-01-25*
+
+#### Bug fixes
+
+- Fix dropdown/select/picker popper position error when has line-height (#1349)
+- Fix DatePicker modify the judgment logic of startDate and endDate (#1322)
+- Fix full bundle export bug (#1350)
+
 ### 1.0.2-beta.29
 
 *2021-01-25*

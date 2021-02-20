@@ -521,15 +521,23 @@ export const useSelect = (props, states: States, ctx) => {
   }
 
   const scrollToOption = option => {
-    const target = Array.isArray(option) ? option[0]?.$el : option.$el
+    const targetOption = Array.isArray(option) ? option[0] : option
+    let target = null
+
+    if(targetOption?.value){
+      const options = states.options.filter(item => item.value === targetOption.value)
+      if (options.length > 0) {
+        target =  options[0].$el
+      }
+    }
+
     if (popper.value && target) {
-      const menu = popper.value?.$el?.querySelector?.('.el-select-dropdown__wrap')
+      const menu = popper.value?.popperRef?.querySelector?.('.el-select-dropdown__wrap')
       if (menu) {
         scrollIntoView(menu, target)
       }
     }
-    // TODO: handleScroll
-    // scrollbar.value?.handleScroll()
+    scrollbar.value?.handleScroll()
   }
 
   const onOptionCreate = (vm: ComponentPublicInstance) => {
